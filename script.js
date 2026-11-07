@@ -44,7 +44,7 @@ function openPDP(id){
     <p style="margin:8px 0">${p.desc}</p><p>Delivery: 1-2 days • Metro Manila</p><p style="color:green">In stock: ${p.stock} available</p>
     <p class="price" style="font-size:22px">₱${p.price}${p.unit}</p>
     <div class="qty"><button onclick="changeQty(-1)">-</button><span id="pdpQty">1</span><button onclick="changeQty(1)">+</button></div>
-    <button class="button" onclick="addToCart(${p.id}, parseInt(document.getElementById('pdpQty').textContent))">Add to Cart</button>`;
+    <button class="add" onclick="addToCart(${p.id}, parseInt(document.getElementById('pdpQty').textContent))">Add to Cart</button>`;
   showSection('pdp');
 }
 
