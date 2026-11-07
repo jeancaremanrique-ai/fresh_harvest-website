@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fresh Harvest - Farm-fresh goodness</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <nav aria-label="Main navigation">
+    <a href="#home">🌿 Fresh Harvest</a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#cart">Cart <span class="badge" id="cartCount">0</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="home" class="hero">
+    <p>🌱 FARM FRESH • DELIVERED TODAY</p>
+    <h1>Farm-fresh goodness, delivered to you.</h1>
+    <p>Local, seasonal produce delivered to your door. Fresh, organic, trusted.</p>
+    <button class="button" onclick="showSection('shop')">Shop Now</button>
+  </section>
+
+  <section>
+    <h2>Shop by Category</h2>
+    <div class="cat" role="group" aria-label="Filter by category">
+      <button class="btn-outline active" onclick="filterCat('all',this)">All</button>
+      <button class="btn-outline" onclick="filterCat('Vegetables',this)">Vegetables</button>
+      <button class="btn-outline" onclick="filterCat('Fruits',this)">Fruits</button>
+      <button class="btn-outline" onclick="filterCat('Organic',this)">Organic</button>
+    </div>
+  </section>
+
+  <section id="shop">
+    <h2>Fresh Produce</h2>
+    <div class="search">
+      <label for="searchInput" class="hidden">Search products</label>
+      <input id="searchInput" type="search" placeholder="Search fruits, vegetables, organic..." oninput="render()">
+      <label for="sortSelect" class="hidden">Sort products</label>
+      <select id="sortSelect" onchange="render()">
+        <option value="recommended">Sort: Recommended</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+        <option value="name">Name: A-Z</option>
+      </select>
+    </div>
+
+    <div id="productGrid" class="grid"></div>
+    <p id="noResult" class="hidden">No products found. Try another search.</p>
+  </section>
+
+  <section id="pdp" class="hidden">
+    <nav aria-label="Breadcrumb"><a href="#shop" onclick="showSection('shop')">Home / Fruits</a> / <span id="pdpName">Product</span></nav>
+    <div style="margin-top:12px" id="pdpContent"></div>
+    <h2 style="margin-top:20px">You may also like</h2>
+    <div id="alsoLike" class="grid"></div>
+  </section>
+
+  <section id="cart">
+    <h2>Cart (<span id="cartTitleCount">0</span>)</h2>
+    <div id="cartList"></div>
+    <p><strong>Subtotal: </strong>₱<span id="subtotal">0</span></p>
+    <p>Delivery: ₱50.00</p>
+    <p><strong>Total: ₱<span id="total">0</span></strong></p>
+
+    <h2 style="margin-top:20px">Checkout</h2>
+    <form id="checkoutForm" novalidate>
+      <label for="fName">Full Name *</label>
+      <input id="fName" type="text" placeholder="Juan Dela Cruz" required>
+      <p class="error" id="eName">Name is required</p>
+
+      <label for="fEmail">Email *</label>
+      <input id="fEmail" type="email" placeholder="juan@email.com" required>
+      <p class="error" id="eEmail">Enter a valid email</p>
+
+      <label for="fAddress">Address *</label>
+      <input id="fAddress" type="text" placeholder="123 Farm Rd, Romblon, Romblon" required>
+      <p class="error" id="eAddress">Address is required</p>
+
+      <label for="fPhone">Phone *</label>
+      <input id="fPhone" type="tel" placeholder="+63 912 345 6789" required>
+
+      <label for="fPay">Payment *</label>
+      <select id="fPay" required>
+        <option value="">Choose payment</option>
+        <option>Cash on Delivery</option>
+        <option>GCash</option>
+        <option>Credit Card •••• 4242</option>
+      </select>
+
+      
+      <button type="submit" class="button" style="margin-top:16px">Place Order</button>
+      <p style="text-align:center;font-size:13px;margin-top:8px">🔒 Secured checkout • Your information is protected</p>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <h3>🌿 Fresh Harvest</h3>
+  <p>Farm-fresh goodness, delivered to you.</p>
+  <nav aria-label="Footer navigation">
+    <h3>SHOP</h3>
+    <ul><li><a href="#home">Home</a></li><li><a href="#shop">Shop All</a></li><li><a href="#shop">Fruits</a></li><li><a href="#shop">Vegetables</a></li><li><a href="#shop">Organic</a></li></ul>
+    <h3>HELP</h3>
+    <ul><li><a href="#home">About Us</a></li><li><a href="#home">Contact</a></li><li><a href="#home">FAQs</a></li><li><a href="#home">Delivery Info</a></li><li><a href="#home">Privacy Policy</a></li></ul>
+  </nav>
+  <h3>CONTACT</h3>
+  <p>✉️ hello@freshharvest.ph<br>📞 +63 912 345 6789<br>📍 Romblon, Romblon</p>
+  <label for="newsEmail">Subscribe to our newsletter</label>
+  <input id="newsEmail" type="email" placeholder="Enter email">
+  <button class="button" onclick="alert('Thanks for subscribing!')">Subscribe</button>
+  <p style="text-align:center;margin-top:16px;font-size:13px">© 2026 Fresh Harvest • All rights reserved • Support • Privacy • Terms</p>
+</footer>
+
+<nav class="bottom" aria-label="Mobile navigation">
+  <a href="#home" onclick="showSection('home')">🏠<br>Home</a>
+  <a href="#shop" onclick="showSection('shop')">🛍️<br>Shop</a>
+  <a href="#cart" onclick="showSection('cart')">🛒<br>Cart <span class="badge" id="cartCount2">0</span></a>
+  <a href="#cart">👤<br>Profile</a>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>
