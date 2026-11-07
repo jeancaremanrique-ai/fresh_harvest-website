@@ -32,7 +32,7 @@ function render(){
       <button class="add" onclick="addToCart(${p.id})">Add to Cart</button>
       <button class="add" style="background:#fff;color:#1A5D1A;border:1px solid #1A5D1A;margin-top:6px" onclick="openPDP(${p.id})">View Details</button></div>
     </article>`).join('');
-  document.getElementById('alsoLike').innerHTML=products.slice(0,2).map(p=>`<article class="card"><img src="${p.img}" alt="${p.name}"><div class="card-body"><h3>${p.name}</h3><p class="price">₱${p.price}${p.unit}</p><button style="background-color:#2e7d32;color:white;border:none;padding:14px 20px;border-radius:25px;font-size:16px;font-weight:bold;width:100%;cursor:pointer;" class="add" onclick="addToCart(${p.id})">Add to Cart</button></div></article>`).join('');
+  document.getElementById('alsoLike').innerHTML=products.slice(0,2).map(p=>`<article class="card"><img src="${p.img}" alt="${p.name}"><div class="card-body"><h3>${p.name}</h3><p class="price">₱${p.price}${p.unit}</p><button class="add" onclick="addToCart(${p.id})">Add to Cart</button></div></article>`).join('');
 }
 
 function openPDP(id){
